@@ -38,7 +38,8 @@ const setupRoutes = contextPath => {
 
         res.send({
           STATUS: "UP",
-          version: packageJSON.version
+          version: packageJSON.version,
+          appname: packageJSON.name
         })
     });
     
