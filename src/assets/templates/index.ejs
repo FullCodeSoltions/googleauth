@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en_US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script>
+      window.appCdnPath = '#APP-CDN-PATH#';
+    </script>
+    <script>
+      function onBodyLoad() {
+        var w_userAgent = navigator.userAgent;
+        /* MSIE used to detect old browsers and Trident used to newer ones*/
+        var w_isIE = w_userAgent.indexOf("MSIE ") > -1 || w_userAgent.indexOf("Trident/") > -1;
+
+        if ( w_isIE ) {
+          document.getElementById('root').style.display = "none";
+
+          var w_errorDiv = document.createElement('div');
+          w_errorDiv.innerHTML = "App does not support IE browser, please use Chrome/Mozilla/Edge";
+          w_errorDiv.style.position = "absolute";
+          w_errorDiv.style.top = "50%";
+          w_errorDiv.style.left = "50%";
+          w_errorDiv.style.transform = "translate(-50%,-50%)";
+          w_errorDiv.style.fontSize = "18px";
+          w_errorDiv.style.color = "#a3a3a3";
+
+          document.body.appendChild(w_errorDiv);
+        }
+      }
+  </script>
+  </head>
+  <body>
+    <noscript>JavaScript need to be enabled in browser to run the app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
